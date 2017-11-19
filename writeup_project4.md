@@ -18,7 +18,9 @@ The goals / steps of this project are the following:
 [image3]: ./output_images/binary_combo_test5.jpg "Binary Example"
 [image4]: ./output_images/warped_straight_lines.jpg "Warp Example"
 [image5]: ./output_images/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+[image6]: ./output_images/example_output.jpg "Output"
+[image7]: ./output_images/Challenge_color_fit_lines.jpg "Problematic fit"
+[image8]: ./output_images/Challenge_color_thresholding.jpg "Noise color thresholding"
 [video1]: ./project_video.mp4 "Video"
 
 ---
