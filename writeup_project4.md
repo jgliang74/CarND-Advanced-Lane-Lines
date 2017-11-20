@@ -55,24 +55,24 @@ I used a combination of color (s channel of HLS color space) and gradient thresh
 The code for my perspective transform includes a function called `find_M_Minv()`, which appears in lines 1 through 8 in the 5th code cell of the IPython notebook("advanced_lane_lines")  The `find_M_Minv()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
 ```python
-src = np.float32([[205,718],
+src = np.float32([[205,719],
                   [590,450],
                   [680,450],
-                  [1100,718]])
+                  [1100,719]])
 
-dst = np.float32([[320, img.shape[0]],
+dst = np.float32([[320, 719],
                   [320, 0],
                   [960, 0],
-                  [960, img.shape[0]]])
+                  [960, 719]])
 ```
 This resulted in the following source and destination points:
 
 | Source         | Destination   | 
 |:--------------:|:-------------:| 
-| 205,  718      | 320, 0        | 
-| 590,  450      | 320, 720      |
-| 680,  450      | 960, 720      |
-| 1100, 718      | 960, 0        |
+| 205,  719      | 320, 719      | 
+| 590,  450      | 320, 0        |
+| 680,  450      | 960, 0        |
+| 1100, 719      | 960, 719      |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
