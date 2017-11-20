@@ -121,18 +121,19 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-The pipeline submitted works reasonably well for the project video. I choose the color thresholding on S channel combined wiht thresholding on the result of applying the Sobel operator in the x direction. Together with region masking, it can pick up both lane lines throughout the entire video. Line object is used for continously frame processing, It only tracks good fits (last 10 frames) and will reject bad fits. Simple sanity checking, like lane width check and fit coefficents difference check, are implemented to reject bad fits. For displaying detected lane lines, best fit is used by averaging polynominal coefficents from last n good fits store in the line objects.
-However, when trying to apply this pipeline to the chanllenge video, it didn't plug and play. A few debug plots are shown as the following 
+The pipeline submitted worked reasonably well for the project video. I choose the color thresholding on S channel combined wiht thresholding on the result of applying the Sobel operator in the x direction. Together with region masking, it can pick up both lane lines through the entire video. Line object was used for continously frame processing, It tracks good fits (last 10 frames) and will reject bad fits. Simple sanity checking, like lane width check and fit coefficents difference check, are implemented to reject bad fits. For displaying detected lane lines, the best fit was calculated by averaging polynominal coefficents from last n good fits stored in the line objects.
+
+However, when trying to apply this pipeline to the chanllenge video, it didn't plug and play. A few debug plots are shown as the followings: 
 
 ![alt text][image7]
 ![alt text][image8]
 
-It clear shows the gradient thresholding generated too much noise on the backgroud which was difficult for region masking to get rid of (due to the curly road, hard to define a suitable masking region). Those noise further confused the search algorithm so that wrong lines are detected.
+It clear shows the gradient thresholding generated too much noise on the backgroud which was difficult for region masking to get rid of (due to the curly road, hard to define a suitable masking region). Those noises further confused the lane line pixels search algorithm so that wrong lines were detected.
 
 Comparing the project video, the challenge video has following difficulties:
 1). lighting condition changes drastically from frame to frame making thresholding a lot more difficult.
-2). Curly road with sharp turns lead to massive background noises presented in binary image.
-3). Lane lines disappear for long time in bright or sharply tuning conditions.
+2). Curly road with sharp turns lead to massive background noises presented in resulting binary image.
+3). Lane lines disappeared for a long time due to either strong sun light or sharp turns.
 
 For the future improvements, I would focus on two major aspects:
 1). To explore more on using different color spaces for thresholding and to be less relying on gradient based threshold which tended to generate more noises with inappropriate threshold settings.
